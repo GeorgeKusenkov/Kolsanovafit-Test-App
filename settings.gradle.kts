@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kolsanovafit Test App"
 include(":app")
- 
+include(":feature-training-list")
+include(":feature-training-details")
