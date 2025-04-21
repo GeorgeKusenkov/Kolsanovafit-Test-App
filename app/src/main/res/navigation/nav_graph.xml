@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/training_list_nav_graph">
+
+    <include
+        android:id="@+id/training_list_nav_graph"
+        app:graph="@navigation/training_list_nav_graph" />
+
+    <include
+        android:id="@+id/training_details_nav_graph"
+        app:graph="@navigation/training_details_nav_graph" />
+</navigation>
