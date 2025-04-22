@@ -2,4 +2,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Cards -->
+    <color name="card_dark">#252525</color>
+    <color name="card_light">#FFFFFF</color>
+
+    <!-- Back -->
+    <color name="background_dark">#1D1D1D</color>
+    <color name="background_light">#F0F0F0</color>
+
+    <!-- Main TExt -->
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_primary_light">#212121</color>
+
+    <!-- Secondary Text -->
+    <color name="text_secondary_dark">#676767</color>
+    <color name="text_secondary_light">#929292</color>
+
+    <!-- Buttons, elmnts -->
+    <color name="color_accent">#7FFF00</color>
 </resources>

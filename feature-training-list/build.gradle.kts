@@ -31,6 +31,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -41,6 +42,17 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+
+    implementation (libs.adapterdelegates)
+    implementation (libs.adapterdelegates.viewbinding)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)

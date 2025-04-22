@@ -8,8 +8,8 @@
 
     <fragment
         android:id="@+id/trainingListFragment"
-        android:name="com.kolsanovafit.feature.training.list.TrainingListFragment"
-        tools:layout="@layout/fragment_training_list">
+        android:name="com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.WorkoutListFragment"
+        tools:layout="@layout/fragment_workout_list">
 
         <action
             android:id="@+id/action_list_to_details"

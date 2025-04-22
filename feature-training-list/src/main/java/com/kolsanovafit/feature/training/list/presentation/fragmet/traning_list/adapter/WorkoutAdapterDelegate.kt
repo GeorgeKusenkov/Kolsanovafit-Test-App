@@ -1,0 +1,32 @@
+package com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.adapter
+
+import androidx.core.view.isVisible
+import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
+import com.kolsanovafit.feature.training.list.R
+import com.kolsanovafit.feature.training.list.data.model.WorkoutType
+import com.kolsanovafit.feature.training.list.databinding.WorkoutItemBinding
+import com.kolsanovafit.feature.training.list.domain.model.Workout
+
+
+fun workoutAdapterDelegate() = adapterDelegateViewBinding<Workout, Workout, WorkoutItemBinding>(
+    { layoutInflater, root -> WorkoutItemBinding.inflate(layoutInflater, root, false) }
+) {
+    bind {
+        binding.run {
+            titleText.text = item.title
+            typeIcon.setImageResource(item.type.toDrawable())
+
+            descriptionText.isVisible = item.description.isNotBlank()
+            descriptionText.text = item.description
+
+            traineeDurationText.text = item.duration
+        }
+    }
+}
+
+fun WorkoutType.toDrawable(): Int = when (this) {
+    WorkoutType.TRAINING -> R.drawable.type_1_run
+    WorkoutType.LIVE     -> R.drawable.type_2_live
+    WorkoutType.COMPLEX  -> R.drawable.type_3_compex
+    WorkoutType.UNKNOWN  -> R.drawable.type_4_def
+}
