@@ -14,6 +14,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val baseUrl: String = project.findProperty("API_BASE_URL") as String
+        buildConfigField("String","API_BASE_URL","\"$baseUrl\"")
+
     }
 
     buildTypes {
@@ -31,6 +35,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig  = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -42,6 +47,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)

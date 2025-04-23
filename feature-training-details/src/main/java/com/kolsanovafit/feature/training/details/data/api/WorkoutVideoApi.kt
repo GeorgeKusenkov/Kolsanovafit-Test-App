@@ -1,20 +1,22 @@
-package com.kolsanovafit.feature.training.list.data.api
+package com.kolsanovafit.feature.training.details.data.api
 
-import com.kolsanovafit.feature.training.list.BuildConfig
-import com.kolsanovafit.feature.training.list.data.model.WorkoutDTO
+import com.kolsanovafit.feature.training.details.BuildConfig
+import com.kolsanovafit.feature.training.details.data.model.WorkoutVideoDTO
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
-interface WorkoutApi {
-    @GET("get_workouts")
-    suspend fun getTrainings(): List<WorkoutDTO>
+interface WorkoutVideoApi {
+    @GET("get_video")
+    suspend fun getVideoById(
+        @Query("id") id: Int
+    ): WorkoutVideoDTO
 }
 
 object RetrofitBuilder {
-
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -29,5 +31,5 @@ object RetrofitBuilder {
         .client(okHttpClient)
         .build()
 
-    val workoutApi: WorkoutApi = retrofit.create(WorkoutApi::class.java)
+    val workoutApi: WorkoutVideoApi = retrofit.create(WorkoutVideoApi::class.java)
 }

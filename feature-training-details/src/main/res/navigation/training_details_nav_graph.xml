@@ -7,11 +7,14 @@
 
     <fragment
         android:id="@+id/trainingDetailsFragment"
-        android:name="com.kolsanovafit.feature.training.details.TrainingDetailsFragment"
+        android:name="com.kolsanovafit.feature.training.details.presentation.fragment.details.TrainingDetailsFragment"
         tools:layout="@layout/fragment_training_details">
 
         <argument
             android:name="trainingId"
+            app:argType="integer" />
+        <argument
+            android:name="description"
             app:argType="string" />
     </fragment>
 

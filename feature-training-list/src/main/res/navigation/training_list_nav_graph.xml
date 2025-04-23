@@ -16,6 +16,9 @@
             app:destination="@id/training_details_nav_graph">
             <argument
                 android:name="trainingId"
+                app:argType="integer" />
+            <argument
+                android:name="description"
                 app:argType="string" />
         </action>
 

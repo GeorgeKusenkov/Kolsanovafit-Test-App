@@ -1,11 +1,13 @@
 package com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.adapter
 
 import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.kolsanovafit.feature.training.list.R
 import com.kolsanovafit.feature.training.list.data.model.WorkoutType
 import com.kolsanovafit.feature.training.list.databinding.WorkoutItemBinding
 import com.kolsanovafit.feature.training.list.domain.model.Workout
+import com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.WorkoutListFragmentDirections
 
 
 fun workoutAdapterDelegate() = adapterDelegateViewBinding<Workout, Workout, WorkoutItemBinding>(
@@ -15,11 +17,17 @@ fun workoutAdapterDelegate() = adapterDelegateViewBinding<Workout, Workout, Work
         binding.run {
             titleText.text = item.title
             typeIcon.setImageResource(item.type.toDrawable())
-
             descriptionText.isVisible = item.description.isNotBlank()
             descriptionText.text = item.description
-
             traineeDurationText.text = item.duration
+
+            root.setOnClickListener { view ->
+                val action = WorkoutListFragmentDirections.actionListToDetails(
+                    trainingId = item.id,
+                    description = item.description
+                )
+                view.findNavController().navigate(action)
+            }
         }
     }
 }

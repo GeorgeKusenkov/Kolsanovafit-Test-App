@@ -13,6 +13,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val baseUrl: String = project.findProperty("API_BASE_URL") as String
+        buildConfigField("String","API_BASE_URL","\"$baseUrl\"")
     }
 
     buildTypes {
@@ -30,6 +33,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig  = true
     }
 
     kotlinOptions {
