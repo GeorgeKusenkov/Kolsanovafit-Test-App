@@ -17,5 +17,6 @@
         <!-- Текстовые стили -->
         <item name="android:textColorPrimary">@color/text_primary_light</item>
         <item name="android:textColorSecondary">@color/text_secondary_light</item>
+
     </style>
 </resources>

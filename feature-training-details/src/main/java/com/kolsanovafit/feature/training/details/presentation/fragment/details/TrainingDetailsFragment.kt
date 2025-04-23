@@ -83,7 +83,7 @@ class TrainingDetailsFragment : Fragment() {
             }
         }
 
-        binding.tittle.text = "Training ID: $trainingId"
+        binding.tittle.text = trainingDescription
     }
 
     override fun onResume() {

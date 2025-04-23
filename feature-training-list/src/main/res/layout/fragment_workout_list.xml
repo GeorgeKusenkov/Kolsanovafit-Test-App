@@ -7,14 +7,89 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragmet.traning_list.WorkoutListFragment">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/typeChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:chipSpacing="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:selectionRequired="false"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_all"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Все" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_training"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тренировка" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_live"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Трансляция" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_complex"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Комплексная" />
+
+    </com.google.android.material.chip.ChipGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeChipGroup" />
+
+    <TextView
+        android:id="@+id/emptyTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:gravity="center"
+        android:text="Список тренировок пуст"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
