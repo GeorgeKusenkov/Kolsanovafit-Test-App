@@ -7,6 +7,7 @@ import com.kolsanovafit.feature.training.list.domain.model.WorkoutType
 import com.kolsanovafit.feature.training.list.domain.usecase.FilterWorkoutsUseCase
 import com.kolsanovafit.feature.training.list.domain.usecase.GetWorkoutsUseCase
 import com.kolsanovafit.feature.training.list.presentation.state.WorkoutState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -15,8 +16,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WorkoutListViewModel(
+@HiltViewModel
+class WorkoutListViewModel @Inject constructor(
     private val getWorkoutsUseCase: GetWorkoutsUseCase,
     private val filterWorkoutsUseCase: FilterWorkoutsUseCase
 ) : ViewModel() {

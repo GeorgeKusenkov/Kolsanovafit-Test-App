@@ -13,30 +13,22 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kolsanovafit.feature.training.list.data.repository.WorkoutRepositoryImpl
 import com.kolsanovafit.feature.training.list.databinding.FragmentWorkoutListBinding
 import com.kolsanovafit.feature.training.list.domain.model.WorkoutType
-import com.kolsanovafit.feature.training.list.domain.usecase.FilterWorkoutsUseCase
-import com.kolsanovafit.feature.training.list.domain.usecase.GetWorkoutsUseCase
 import com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.adapter.WorkoutAdapter
-import com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.viewmodel.TrainingViewModelFactory
 import com.kolsanovafit.feature.training.list.presentation.fragmet.traning_list.viewmodel.WorkoutListViewModel
 import com.kolsanovafit.feature.training.list.presentation.state.WorkoutState
 import kotlinx.coroutines.launch
 import androidx.core.view.isGone
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutListFragment : Fragment() {
 
     private var _binding: FragmentWorkoutListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: WorkoutListViewModel by viewModels {
-        TrainingViewModelFactory(
-            GetWorkoutsUseCase(WorkoutRepositoryImpl()),
-            FilterWorkoutsUseCase()
-        )
-    }
-
+    private val viewModel: WorkoutListViewModel by viewModels()
     private val adapter by lazy { WorkoutAdapter() }
 
     override fun onCreateView(

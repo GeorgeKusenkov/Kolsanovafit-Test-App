@@ -1,13 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.navigation)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.kolsanovafit.feature.training.list"
+    namespace = "com.kolsanovafit.core.network"
     compileSdk = 35
 
     defaultConfig {
@@ -15,6 +14,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val baseUrl: String = project.findProperty("API_BASE_URL") as String
+        buildConfigField("String","API_BASE_URL","\"$baseUrl\"")
     }
 
     buildTypes {
@@ -31,25 +33,16 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
-        viewBinding = true
+        buildConfig  = true
     }
-
     kotlinOptions {
         jvmTarget = "11"
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
-    implementation (libs.kotlinx.coroutines.android)
-
-    implementation (libs.adapterdelegates)
-    implementation (libs.adapterdelegates.viewbinding)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
@@ -58,8 +51,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

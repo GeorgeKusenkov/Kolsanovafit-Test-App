@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation)
-
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -14,10 +15,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        val baseUrl: String = project.findProperty("API_BASE_URL") as String
-        buildConfigField("String","API_BASE_URL","\"$baseUrl\"")
-
     }
 
     buildTypes {
@@ -35,7 +32,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        buildConfig  = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -50,6 +46,9 @@ dependencies {
 
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.kotlinx.coroutines.android)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)

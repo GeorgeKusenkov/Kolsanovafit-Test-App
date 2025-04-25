@@ -12,13 +12,10 @@ import kotlin.getValue
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.kolsanovafit.feature.training.details.data.api.RetrofitBuilder
-import com.kolsanovafit.feature.training.details.data.repository.WorkoutVideoRepositoryImpl
-import com.kolsanovafit.feature.training.details.domain.usecase.GetWorkoutVideoUseCase
 import com.kolsanovafit.feature.training.details.presentation.state.WorkoutVideoState
 import com.kolsanovafit.feature.training.details.presentation.fragment.details.viewmodel.WorkoutDetailsViewModel
-import com.kolsanovafit.feature.training.details.presentation.fragment.details.viewmodel.TrainingDetailsViewModelFactory
 import com.kolsanovafit.feature.training.details.presentation.mediaplayer.KolsaMediaPlayer
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
@@ -27,20 +24,14 @@ import kotlinx.coroutines.launch
  *
  * Обеспечивает работу с видео (в рамках стандартного ф-ла Media Player ¯\_(ツ)_/¯)
  */
+
+@AndroidEntryPoint
 class TrainingDetailsFragment : Fragment() {
     private var _binding: FragmentTrainingDetailsBinding? = null
     private val binding get() = _binding!!
 
     //Да, некрасиво. Если успею, то доберусь и добавлю нормальный DI
-    private val viewModel: WorkoutDetailsViewModel by viewModels {
-        TrainingDetailsViewModelFactory(
-            GetWorkoutVideoUseCase(
-                WorkoutVideoRepositoryImpl(
-                    RetrofitBuilder.workoutApi
-                )
-            )
-        )
-    }
+    private val viewModel: WorkoutDetailsViewModel by viewModels ()
 
     private val args: TrainingDetailsFragmentArgs by navArgs()
     private lateinit var player: KolsaMediaPlayer
